@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProVest</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #f8fafc;
+            --accent: #3b82f6;
+            --text: #1f2937;
+            --white: #ffffff;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --gradient: linear-gradient(135deg, #3b82f6, #1e3a8a);
+            --hover-scale: 1.03;
+            --transition: all 0.3s ease;
+        }
+
+        html {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--secondary);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 3rem 0 2rem 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            opacity: 0.5;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            position: relative;
+            animation: fadeInDown 1s ease;
+        }
+
+        header p {
+            margin: 0.5rem 0 0;
+            font-size: 1.25rem;
+            font-weight: 300;
+            position: relative;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+
+        section {
+            background: var(--white);
+            margin-bottom: 2.5rem;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        section:nth-of-type(1) { animation-delay: 0.1s; }
+        section:nth-of-type(2) { animation-delay: 0.2s; }
+        section:nth-of-type(3) { animation-delay: 0.3s; }
+        section:nth-of-type(4) { animation-delay: 0.4s; }
+        section:nth-of-type(5) { animation-delay: 0.5s; }
+        section:nth-of-type(6) { animation-delay: 0.6s; }
+        section:nth-of-type(7) { animation-delay: 0.7s; }
+        section:nth-of-type(8) { animation-delay: 0.8s; }
+        section:nth-of-type(9) { animation-delay: 0.9s; }
+        section:nth-of-type(10) { animation-delay: 1s; }
+        section:nth-of-type(11) { animation-delay: 1.1s; }
+        section:nth-of-type(12) { animation-delay: 1.2s; }
+
+        section:hover {
+            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.2);
+            transform: translateY(-5px);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--primary);
+            margin-top: 0;
+            font-weight: 600;
+        }
+
+        h1 { font-size: 2rem; }
+        h2 { font-size: 1.75rem; margin-bottom: 1.2rem; }
+        h3 { font-size: 1.4rem; margin-bottom: 1rem; }
+        h4, h5, h6 { font-size: 1.15rem; margin-bottom: 0.75rem; }
+
+        ul, ol {
+            padding-left: 1.5rem;
+        }
+
+        .turmas-list, .professores-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .turmas-list li, .professores-list li {
+            background: var(--secondary);
+            padding: 0.75rem 1.25rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .turmas-list li:hover, .professores-list li:hover {
+            background: var(--accent);
+            color: var(--white);
+            transform: scale(var(--hover-scale));
+        }
+
+        .contato {
+            margin-top: 1.5rem;
+            background: var(--gradient);
+            color: var(--white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .contato a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+            margin-top: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(30,58,138,0.9);
+            border-radius: 8px;
+        }
+
+        .contato a:hover {
+            text-decoration: underline;
+            opacity: 0.9;
+            background: var(--accent);
+        }
+
+        .localizacao {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .localizacao-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        .localizacao:hover .localizacao-icon {
+            transform: scale(1.1);
+        }
+
+        /* Animações */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsividade */
+        @media (max-width: 900px) {
+            main {
+                max-width: 95vw;
+                padding: 0 1rem;
+            }
+            section {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .turmas-list, .professores-list {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.25rem;
+            }
+            .localizacao-icon {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            main {
+                padding: 0 0.5rem;
+            }
+            section {
+                padding: 1rem;
+                border-radius: 12px;
+            }
+            header h1 {
+                font-size: 1.5rem;
+            }
+            header p {
+                font-size: 1rem;
+            }
+            h2 {
+                font-size: 1.1rem;
+            }
+            .localizacao {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            .localizacao-icon {
+                font-size: 1.75rem;
+            }
+        }
+
+        @media (max-width: 370px) {
+            header h1 {
+                font-size: 1.2rem;
+            }
+            section {
+                padding: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ProVest</h1>
+        <p>Cursinho preparatório para vestibulares e concursos</p>
+    </header>
+    <main>
+        <section>
+            <h2>Gostaria de realizar a matrícula?</h2>
+            <ul class="turmas-list">
+                <li>Turma PSC-1 (Semana)</li>
+                <li>Turma PSC-2 (Semana)</li>
+                <li>Turma PSC/ENEM (Semana)</li>
+                <li>Turma PSC-1 (Sábado)</li>
+                <li>Turma PSC-2 (Sábado)</li>
+                <li>Turma PSC/ENEM (Sábado)</li>
+            </ul>
+            <div class="contato">
+                <span>Para realizar a matrícula, acesse:</span><br>
+                <a href="https://linktr.ee/pro_vest" target="_blank" rel="noopener" class="cta-button">Matrícula</a>
+            </div>
+        </section>
+        <section>
+            <h3>Sobre o ProVest</h3>
+            <p>
+                O ProVest é um cursinho preparatório que visa ajudar os alunos a se prepararem para os desafios dos vestibulares e concursos públicos. Com uma abordagem focada no aprendizado ativo, o ProVest busca desenvolver habilidades críticas e analíticas nos alunos, preparando-os para o sucesso acadêmico e profissional.
+            </p>
+        </section>
+        <section>
+            <h3>Conheça nossa equipe de professores</h3>
+            <ul class="professores-list">
+                <li>Professor/Coordenador Marcondes</li>
+                <li>Professor Adoneles</li>
+                <li>Professor Carlos</li>
+                <li>Professor Alexandre</li>
+                <li>Professor Everton</li>
+                <li>Professor Ítalo</li>
+                <li>Professor Mateus</li>
+                <li>Professor Luca</li>
+                <li>Professora Karoline</li>
+                <li>Professora Elizabeth</li>
+            </ul>
+        </section>
+        <section>
+            <button style="width:100%;background:var(--accent);color:var(--white);border:none;padding:1.2rem 0;font-size:1.2rem;border-radius:12px;cursor:pointer;transition:background 0.3s;margin-bottom:2rem;"
+                onclick="document.getElementById('aprovados-list').style.display = (document.getElementById('aprovados-list').style.display === 'none' ? 'block' : 'none')">
+                Ver aprovados
+            </button>
+            <div id="aprovados-list" style="display:none;">
+                <section>
+                    <h1>Conheça os aprovados de 2019</h1>
+                    <p>Em breve divulgaremos a lista de aprovados!</p>
+                </section>
+                <section>
+                    <h2>Conheça os aprovados de 2020</h2>
+                    <p>Em breve divulgaremos a lista de aprovados!</p>
+                </section>
+                <section>
+                    <h3>Conheça os aprovados de 2021</h3>
+                    <p>Em breve divulgaremos a lista de aprovados!</p>
+                </section>
+                <section>
+                    <h4>Conheça os aprovados de 2022</h4>
+                    <p>Em breve divulgaremos a lista de aprovados!</p>
+                </section>
+                <section>
+                    <h4>Conheça os alunos aprovados de 2023</h4>
+                    <p>Em breve divulgaremos a lista de aprovados!</p>
+                </section>
+                <section>
+                    <h5>Conheça os alunos aprovados de 2024</h5>
+                    <p>Em breve divulgaremos a lista de aprovados!</p>
+                </section>
+                <section>
+                    <h6>Conheça os aprovados de 2025</h6>
+                    <p>Em breve...</p>
+                </section>
+            </div>
+        </section>
+        <section>
+            <h6>Localização</h6>
+            <div class="localizacao">
+                <span class="localizacao-icon">📍</span>
+                <span>
+                    Unidade Centro: Av. Epaminondas, 726 - Centro, Manaus - AM, 69010-090<br>
+                    Unidade Zona Leste: Av. Autaz Mirim, 6871 - Tancredo Neves, Manaus - AM, 69085-000
+                </span>
+            </div>
+        </section>
+    </main>
+</body>
+</html>v
