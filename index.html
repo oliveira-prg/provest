@@ -65,6 +65,7 @@
             letter-spacing: 1px;
             position: relative;
             animation: fadeInDown 1s ease;
+            color: var(--white); /* Título em branco */
         }
 
         header p {
@@ -281,39 +282,110 @@
         <section>
             <h2>Gostaria de realizar a matrícula?</h2>
             <ul class="turmas-list">
-                <li>Turma PSC-1 (Semana)</li>
-                <li>Turma PSC-2 (Semana)</li>
-                <li>Turma PSC/ENEM (Semana)</li>
-                <li>Turma PSC-1 (Sábado)</li>
-                <li>Turma PSC-2 (Sábado)</li>
-                <li>Turma PSC/ENEM (Sábado)</li>
+                <li>
+                    <button class="expand-turma" aria-expanded="false" style="background:none;border:none;color:var(--primary);font-weight:bold;font-size:1.05rem;cursor:pointer;padding:0;margin-bottom:0.3rem;">
+                        Turma Mathias +
+                    </button>
+                    <div class="turma-info" style="display:none; font-size:0.97rem; color:#444; margin-top:0.5rem;">
+                        Manhã: 08:00 - 11:00.<br>
+                        Tarde: 14:00 - 17:00.<br>
+                        Conteúdo voltados para o processo seletivo da Fundação Mathias Machline<br>
+                        Local: Unidade Zona Leste/Centro.
+                    </div>
+                </li>
+                <li>
+                    <button class="expand-turma" aria-expanded="false" style="background:none;border:none;color:var(--primary);font-weight:bold;font-size:1.05rem;cursor:pointer;padding:0;margin-bottom:0.3rem;">
+                        Turma PSC-1 +
+                    </button>
+                    <div class="turma-info" style="display:none; font-size:0.97rem; color:#444; margin-top:0.5rem;">
+                        Conteúdo específico para 1º ano do PSC/SIS.<br>
+                        Manhã: 08:00 - 11:00.<br>
+                        Tarde: 14:00 - 17:00.<br>
+                        Sábados: 08:00 - 17:40.<br>
+                        Local: Unidade Zona Leste/Centro
+                    </div>
+                </li>
+                <li>
+                    <button class="expand-turma" aria-expanded="false" style="background:none;border:none;color:var(--primary);font-weight:bold;font-size:1.05rem;cursor:pointer;padding:0;margin-bottom:0.3rem;">
+                        Turma PSC-2 +
+                    </button>
+                    <div class="turma-info" style="display:none; font-size:0.97rem; color:#444; margin-top:0.5rem;">
+                        Conteúdos específicos para 2º ano do PSC/SIS<br>
+                        Manhã: 08:00 - 11:00<br>
+                        Tarde: 14:00 - 17:00<br>
+                        Sábados: 08:00 - 17:40<br>
+                        Local: Unidade Zona Leste/Centro.
+                    </div>
+                </li>
+                <li>
+                    <button class="expand-turma" aria-expanded="false" style="background:none;border:none;color:var(--primary);font-weight:bold;font-size:1.05rem;cursor:pointer;padding:0;margin-bottom:0.3rem;">
+                        Turma PSC/ENEM +
+                    </button>
+                    <div class="turma-info" style="display:none; font-size:0.97rem; color:#444; margin-top:0.5rem;">
+                        Conteúdos específicos para 3º ano do PSC/SIS e para ENEM/MACRO<br>
+                        Manhã: 08:00 - 12:00.<br>
+                        Tarde: 14:00 - 17:00.<br>
+                        Sábados: 08:00 - 17:40.<br>
+                        Local: Unidade Zona Leste/Centro.
+                    </div>
+                </li>
             </ul>
             <div class="contato">
-                <span>Para realizar a matrícula, acesse:</span><br>
-                <a href="https://linktr.ee/pro_vest" target="_blank" rel="noopener" class="cta-button">Matrícula</a>
+                <a href="https://linktr.ee/pro_vest" target="_blank" rel="noopener" class="cta-button">Fale conosco</a>
             </div>
+            <script>
+                // Expande/minimiza informações das turmas
+                document.querySelectorAll('.expand-turma').forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        const info = btn.nextElementSibling;
+                        const expanded = btn.getAttribute('aria-expanded') === 'true';
+                        if (expanded) {
+                            info.style.display = 'none';
+                            btn.setAttribute('aria-expanded', 'false');
+                            btn.textContent = btn.textContent.replace(' -', ' +').replace('–', '+');
+                        } else {
+                            info.style.display = 'block';
+                            btn.setAttribute('aria-expanded', 'true');
+                            btn.textContent = btn.textContent.replace(' +', ' -').replace('+', '–');
+                        }
+                    });
+                });
+            </script>
         </section>
         <section>
-            <h3>Sobre o ProVest</h3>
-            <p>
-                O ProVest é um cursinho preparatório que visa ajudar os alunos a se prepararem para os desafios dos vestibulares e concursos públicos. Com uma abordagem focada no aprendizado ativo, o ProVest busca desenvolver habilidades críticas e analíticas nos alunos, preparando-os para o sucesso acadêmico e profissional.
-            </p>
+            <button id="btn-professores" style="width:100%;background:var(--accent);color:var(--white);border:none;padding:1.1rem 0;font-size:1.1rem;border-radius:12px;cursor:pointer;transition:background 0.3s;margin-bottom:1rem;">
+                Ver equipe de professores
+            </button>
+            <div id="professores-list" style="display:none;">
+                <h3>Conheça nossa equipe de professores</h3>
+                <ul class="professores-list">
+                    <li>Professor/Coordenador Marcondes</li>
+                    <li>Professor Adoneles</li>
+                    <li>Professor Carlos</li>
+                    <li>Professor Alexandre</li>
+                    <li>Professor Everton</li>
+                    <li>Professor Ítalo</li>
+                    <li>Professor Mateus</li>
+                    <li>Professor Luca</li>
+                    <li>Professora Karoline</li>
+                    <li>Professora Elizabeth</li>
+                </ul>
+            </div>
+            <script>
+                const btnProfessores = document.getElementById('btn-professores');
+                const professoresDiv = document.getElementById('professores-list');
+                btnProfessores.addEventListener('click', function() {
+                    if (professoresDiv.style.display === 'none' || professoresDiv.style.display === '') {
+                        professoresDiv.style.display = 'block';
+                        btnProfessores.textContent = 'Ocultar equipe de professores';
+                    } else {
+                        professoresDiv.style.display = 'none';
+                        btnProfessores.textContent = 'Ver equipe de professores';
+                    }
+                });
+            </script>
         </section>
-        <section>
-            <h3>Conheça nossa equipe de professores</h3>
-            <ul class="professores-list">
-                <li>Professor/Coordenador Marcondes</li>
-                <li>Professor Adoneles</li>
-                <li>Professor Carlos</li>
-                <li>Professor Alexandre</li>
-                <li>Professor Everton</li>
-                <li>Professor Ítalo</li>
-                <li>Professor Mateus</li>
-                <li>Professor Luca</li>
-                <li>Professora Karoline</li>
-                <li>Professora Elizabeth</li>
-            </ul>
-        </section>
+
         <section>
             <button style="width:100%;background:var(--accent);color:var(--white);border:none;padding:1.2rem 0;font-size:1.2rem;border-radius:12px;cursor:pointer;transition:background 0.3s;margin-bottom:2rem;"
                 onclick="document.getElementById('aprovados-list').style.display = (document.getElementById('aprovados-list').style.display === 'none' ? 'block' : 'none')">
@@ -359,7 +431,47 @@
                     Unidade Zona Leste: Av. Autaz Mirim, 6871 - Tancredo Neves, Manaus - AM, 69085-000
                 </span>
             </div>
+            <button id="btn-mapas" style="width:100%;background:var(--accent);color:var(--white);border:none;padding:1.1rem 0;font-size:1.1rem;border-radius:12px;cursor:pointer;transition:background 0.3s;margin-top:1.5rem;margin-bottom:1rem;">
+                Ver mapas das unidades
+            </button>
+            <div id="mapas-localizacao" style="display:none; margin-top:0; display: flex; flex-wrap: wrap; gap: 1rem;">
+                <iframe
+                    title="Mapa Unidade Centro"
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=-60.025,-3.134,-60.021,-3.130&amp;layer=mapnik&amp;marker=-3.132,-60.023"
+                    style="border:1px solid #ccc; border-radius:12px; width:100%; max-width:400px; height:220px;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+                <iframe
+                    title="Mapa Unidade Zona Leste"
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=-59.9215,-3.0935,-59.9175,-3.0895&amp;layer=mapnik&amp;marker=-3.0915,-59.9195"
+                    style="border:1px solid #ccc; border-radius:12px; width:100%; max-width:400px; height:220px;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+            <script>
+                const btnMapas = document.getElementById('btn-mapas');
+                const mapasDiv = document.getElementById('mapas-localizacao');
+                btnMapas.addEventListener('click', function() {
+                    if (mapasDiv.style.display === 'none' || mapasDiv.style.display === '') {
+                        mapasDiv.style.display = 'flex';
+                        btnMapas.textContent = 'Ocultar mapas das unidades';
+                    } else {
+                        mapasDiv.style.display = 'none';
+                        btnMapas.textContent = 'Ver mapas das unidades';
+                    }
+                });
+            </script>
+        </section>
+        <section>
+            <h3>Sobre o ProVest</h3>
+            <p>
+                O ProVest é um cursinho preparatório que visa ajudar os alunos a se prepararem para os desafios dos vestibulares e concursos públicos. Com uma abordagem focada no aprendizado ativo, o ProVest busca desenvolver habilidades críticas e analíticas nos alunos, preparando-os para o sucesso acadêmico e profissional.
+            </p>
         </section>
     </main>
 </body>
-</html>v
+</html>
