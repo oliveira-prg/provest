@@ -58,6 +58,7 @@
             letter-spacing: 1px;
             position: relative;
             animation: fadeInDown 1s ease;
+            color: var(--white); /* Título em branco */
         }
 
         header p {
