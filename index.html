@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>ProVest</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --blue-dark: #1e3a8a;
+            --blue: #3b82f6;
+            --blue-light: #93c5fd;
+            --white: #ffffff;
+            --gray: #f1f5f9;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-light) 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+
+        .toggle-btn span {
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-btn.active span {
+            transform: rotate(180deg);
+        }
+
+        .turma-info {
+            animation: slideDown 0.3s ease-in-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, var(--blue-dark), var(--blue-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--blue);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-900 to-blue-300">
+    <div class="container mx-auto max-w-4xl mt-12 mb-8 p-8 rounded-2xl shadow-lg">
+        <header class="text-4xl font-bold text-center gradient-text mb-6 tracking-wide">
+            ProVest: Vestibulares e Concursos
+        </header>
+        <nav class="flex justify-center flex-wrap gap-4 mb-8">
+            <a href="https://linktr.ee/pro_vest?fbclid=PAZXh0bgNhZW0CMTEAAaeJxlw01a8C5p8smp3y7YpkSPbUcA3b5ujoF4H4fYA6v2s_cySZiIXm1GDh8A_aem_WwPlEQk022eeUUpLw_GasQ" class="nav-link px-6 py-3 bg-blue-50 text-blue-600 font-semibold rounded-lg hover:bg-blue-500 hover:text-white transition-all duration-300 shadow-sm hover:shadow-md">Contato</a>
+            <a href="https://www.instagram.com/pro_vest/followers/mutualOnly" class="nav-link px-6 py-3 bg-blue-50 text-blue-600 font-semibold rounded-lg hover:bg-blue-500 hover:text-white transition-all duration-300 shadow-sm hover:shadow-md">Redes Sociais</a>
+        </nav>
+    </div>
+
+    <div class="container mx-auto max-w-4xl mb-8 p-8 rounded-2xl shadow-lg">
+        <h1 class="text-3xl font-bold text-center gradient-text mb-6">Turmas</h1>
+        <div class="w-16 h-1 bg-gradient-to-r from-blue-600 to-blue-300 rounded mx-auto mb-8"></div>
+        <div class="space-y-4">
+            <div class="turma-card bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+                <button class="toggle-btn w-full bg-gradient-to-r from-blue-600 to-blue-300 text-white font-semibold py-4 px-6 rounded-t-xl flex justify-between items-center" onclick="toggleTurma(this)">
+                    Mathias Machline <span class="text-lg">▼</span>
+                </button>
+                <div class="turma-info hidden p-6">
+                    <ul class="list-disc pl-6 text-blue-600 space-y-2">
+                        <li>Manhã: 08:00 - 11:00</li>
+                        <li>Tarde: 14:00 - 17:00</li>
+                        <li>Local: Unidade Zona Leste/Centro</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="turma-card bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+                <button class="toggle-btn w-full bg-gradient-to-r from-blue-600 to-blue-300 text-white font-semibold py-4 px-6 rounded-t-xl flex justify-between items-center" onclick="toggleTurma(this)">
+                    SIS/PSC 1 <span class="text-lg">▼</span>
+                </button>
+                <div class="turma-info hidden p-6">
+                    <ul class="list-disc pl-6 text-blue-600 space-y-2">
+                        <li>Manhã: 08:00 - 11:00</li>
+                        <li>Tarde: 14:00 - 17:00</li>
+                        <li>Sábado: 08:00 - 17:40</li>
+                        <li>Local: Unidade Zona Leste/Centro</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="turma-card bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+                <button class="toggle-btn w-full bg-gradient-to-r from-blue-600 to-blue-300 text-white font-semibold py-4 px-6 rounded-t-xl flex justify-between items-center" onclick="toggleTurma(this)">
+                    SIS/PSC 2 <span class="text-lg">▼</span>
+                </button>
+                <div class="turma-info hidden p-6">
+                    <ul class="list-disc pl-6 text-blue-600 space-y-2">
+                        <li>Manhã: 08:00 - 11:00</li>
+                        <li>Tarde: 14:00 - 17:00</li>
+                        <li>Sábado: 08:00 - 17:40</li>
+                        <li>Local: Unidade Zona Leste/Centro</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="turma-card bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+                <button class="toggle-btn w-full bg-gradient-to-r from-blue-600 to-blue-300 text-white font-semibold py-4 px-6 rounded-t-xl flex justify-between items-center" onclick="toggleTurma(this)">
+                    MACRO / ENEM / SIS / PSC 3 <span class="text-lg">▼</span>
+                </button>
+                <div class="turma-info hidden p-6">
+                    <ul class="list-disc pl-6 text-blue-600 space-y-2">
+                        <li>Manhã: 08:00 - 11:00</li>
+                        <li>Tarde: 14:00 - 17:00</li>
+                        <li>Sábado: 08:00 - 17:40</li>
+                        <li>Local: Unidade Zona Leste/Centro</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mx-auto max-w-4xl mb-8 p-8 rounded-2xl shadow-lg">
+        <h2 class="text-2xl font-bold text-center gradient-text mb-6">Conheça nossa equipe de professores</h2>
+        <div class="w-16 h-1 bg-gradient-to-r from-blue-600 to-blue-300 rounded mx-auto mb-8"></div>
+        <ul class="space-y-3">
+            <li><a href="https://www.instagram.com/prof_marcondes_/" target="_blank" class="block bg-gradient-to-r from-blue-50 to-blue-100 text-blue-600 font-medium py-3 px-6 rounded-lg hover:bg-blue-500 hover:text-white transition-all duration-300 text-center">Coordenador Marcondes</a></li>
+            <li><a href="https://www.instagram.com/adoneles_/" target="_blank" class="block bg-gradient-to-r from-blue-50 to-blue-100 text-blue-600 font-medium py-3 px-6 rounded-lg hover:bg-blue-500 hover:text-white transition-all duration-300 text-center">Professor Adoneles</a></li>
+            <li><a href="https://www.instagram.com/xandao_almeida/" target="_blank" class="block bg-gradient-to-r from-blue-50 to-blue-100 text-blue-600 font-medium py-3 px-6 rounded-lg hover:bg-blue-500 hover:text-white transition-all duration-300 text-center">Professor Alexandre</a></li>
+            <li><a href="https://www.instagram.com/evpinheiro55/" target="_blank" class="block bg-gradient-to-r from-blue-50 to-blue-100 text-blue-600 font-medium py-3 px-6 rounded-lg hover:bg-blue-500 hover:text-white transition-all duration-300 text-center">Professor Everton</a></li>
+            <li><a href="https://www.instagram.com/karolinearaujobio/" target="_blank" class="block bg-gradient-to-r from-blue-50 to-blue-100 text-blue-600 font-medium py-3 px-6 rounded-lg hover:bg-blue-500 hover:text-white transition-all duration-300 text-center">Professora Karoline</a></li>
+            <li><a href="https://www.instagram.com/elizabethmachado16/" target="_blank" class="block bg-gradient-to-r from-blue-50 to-blue-100 text-blue-600 font-medium py-3 px-6 rounded-lg hover:bg-blue-500 hover:text-white transition-all duration-300 text-center">Professora Elizabeth</a></li>
+            <li><a href="https://www.instagram.com/italorobertooliveira/" target="_blank" class="block bg-gradient-to-r from-blue-50 to-blue-100 text-blue-600 font-medium py-3 px-6 rounded-lg hover:bg-blue-500 hover:text-white transition-all duration-300 text-center">Professor Ítalo</a></li>
+            <li><a href="https://www.instagram.com/lucapremoli_/" target="_blank" class="block bg-gradient-to-r from-blue-50 to-blue-100 text-blue-600 font-medium py-3 px-6 rounded-lg hover:bg-blue-500 hover:text-white transition-all duration-300 text-center">Professor Luca</a></li>
+            <li><a href="https://www.instagram.com/prof.mateusdsouza/" target="_blank" class="block bg-gradient-to-r from-blue-50 to-blue-100 text-blue-600 font-medium py-3 px-6 rounded-lg hover:bg-blue-500 hover:text-white transition-all duration-300 text-center">Professor Mateus</a></li>
+            <li><a href="https://www.instagram.com/allancardos0/" target="_blank" class="block bg-gradient-to-r from-blue-50 to-blue-100 text-blue-600 font-medium py-3 px-6 rounded-lg hover:bg-blue-500 hover:text-white transition-all duration-300 text-center">Professor Allan</a></li>
+            <li><a href="https://www.instagram.com/ocarlos.fernandes/" target="_blank" class="block bg-gradient-to-r from-blue-50 to-blue-100 text-blue-600 font-medium py-3 px-6 rounded-lg hover:bg-blue-500 hover:text-white transition-all duration-300 text-center">Professor Carlos</a></li>
+            <li><a href="https://www.instagram.com/alarissacruz/" target="_blank" class="block bg-gradient-to-r from-blue-50 to-blue-100 text-blue-600 font-medium py-3 px-6 rounded-lg hover:bg-blue-500 hover:text-white transition-all duration-300 text-center">Professora Larissa</a></li>
+        </ul>
+    </div>
+
+    <div class="container mx-auto max-w-4xl mb-8 p-8 rounded-2xl shadow-lg">
+        <h3 class="text-xl font-bold text-center gradient-text mb-6">Localização</h3>
+        <div class="w-16 h-1 bg-gradient-to-r from-blue-600 to-blue-300 rounded mx-auto mb-8"></div>
+        <ul class="space-y-3">
+            <li><a href="https://www.google.com.br/maps/place/Pr%C3%B3-Vest+Vestibulares+e+Concursos+-+Unidade+Zona+Leste/@-3.11296,-59.9916544,13z/data=!4m10!1m2!2m1!1sprovest!3m6!1s0x926c1b9080974901:0x8c5cb4c7bf0fb766!8m2!3d-3.0568459!4d-59.9481968!15sCgdwcm92ZXN0IgOIAQGSAQ5wcml2YXRlX3NjaG9vbKoBTAoNL2cvMTFmc3FndnY2ZxABKgsiB3Jyb3Zlc3QoDDIfEAEiG7cLKDJaWC_1kXvHmGHCSKFZcAqjkptJb280GjILEAIiB3Byb3Zlc3TgAQA!16s%2Fg%2F1pv6z29cn?entry=ttu&g_ep=EgoyMDI1MDcwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="block bg-gradient-to-r from-blue-50 to-blue-100 text-blue-600 font-medium py-3 px-6 rounded-lg hover:bg-blue-500 hover:text-white transition-all duration-300 text-center">Unidade Zona Leste</a></li>
+            <li><a href="https://www.google.com.br/maps/place/Pr%C3%B3-Vest+Vestibulares+e+Concursos+-+Unidade+Centro/@-3.1261411,-60.061534,13z/data=!4m10!1m2!2m1!1sprovest!3m6!1s0x926c0f48e3c697df:0x189bb4c94f1ebe50!8m2!3d-3.1261411!4d-60.0265151!15sCgdwcm92ZXN0IgOIAQGSAQ5wcml2YXRlX3NjaG9vbKoBTAoNL2cvMTFmc3FndnY2ZxABKgsiB3Jyb3Zlc3QoDDIfEAEiG7cLKDJaWC_1kXvHmGHCSKFZcAqjkptJb280GjILEAIiB3Byb3Zlc3TgAQA!16s%2Fg%2F11qbqv7fhn?entry=ttu&g_ep=EgoyMDI1MDcwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="block bg-gradient-to-r from-blue-50 to-blue-100 text-blue-600 font-medium py-3 px-6 rounded-lg hover:bg-blue-500 hover:text-white transition-all duration-300 text-center">Unidade Centro</a></li>
+        </ul>
+    </div>
+
+    <footer class="text-center text-white py-8 text-sm opacity-80">
+        © 2025 ProVest. Todos os direitos reservados.
+    </footer>
+
+    <script>
+        function toggleTurma(btn) {
+            const info = btn.nextElementSibling;
+            const span = btn.querySelector('span');
+            btn.classList.toggle('active');
+            info.classList.toggle('hidden');
+            span.textContent = info.classList.contains('hidden') ? '▼' : '▲';
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll('.turma-info').forEach(function(div) {
+                div.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
